@@ -1,0 +1,63 @@
+
+                <!-- Begin Page Content -->
+                <div class="container-fluid">
+
+                    <!-- Page Heading -->
+                    <h1 class="h3 mb-2 text-gray-800">جدول سربرگ</h1>
+                    @if(ViewBag.message!=null)
+                    {
+                        <p class="mb_4 alert alert_warning">@ViewBag.message</p>
+                    }
+
+                    <!-- DataTales Example -->
+                    <div class="card shadow mb-4">
+                        <div class="card-header py-3">
+                            <h6 class="m-0 font-weight-bold text-primary">جدول سربرگ</h6>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                    <thead>
+                                        <tr>
+                                            <th>عنوان</th>
+                                            <th>توضیحات</th>
+                                            <th>عکس</th>
+                                            <th>عملیات</th>
+                                        </tr>
+                                    </thead>
+                                    <tfoot>
+                                        <tr>
+                                            <th>عنوان</th>
+                                            <th>توضیحات</th>
+                                            <th>عکس</th>
+                                            <th>عملیات</th>
+                                        </tr>
+                                    </tfoot>
+                                    </tbody>
+                                    <tfoot>
+                                        <tr>
+                                            @if(ViewBag.find !=null)
+                                            {
+                                                foreach(var item in ViewBag.find)
+                                                {
+                                                   <td>@item.Title</td> 
+                                                   <td>@item.Detail</td>
+                                                   <td>
+                                                    <img src="/fileupload/@item.image" width="25%">
+                                                   </td>  
+                                                   <td>
+                                                    <a class="btn btn-warning" href="/admin/adminheader/Gotoupdata/@item.Id">ویرایش</a>
+                                                   </td>
+                                                }
+                                            }
+                                            
+                                        </tr>
+                                    </tfoot>
+                                    
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <!-- /.container-fluid -->

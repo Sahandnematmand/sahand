@@ -1,0 +1,71 @@
+
+<!-- Begin Page Content -->
+<div class="container-fluid">
+<!-- Page Heading -->
+<h1 class="h3 mb-2 text-gray-800">جدول شرکت ها </h1>
+<a class="btn btn-sm btn btn-success" href="/Admin/AdminCompany/Gotoadd">افزودن شرکت جدید</a>
+@if(ViewBag.message!=null)
+{
+    <p class="mb-4 alert alert-warning text-center">@ViewBag.message</p>
+}
+<!-- DataTales Example -->
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">جدول شرکت ها </h6>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                    <th>
+                        <tr>عنوان</tr>
+                        <tr>عکس</tr>
+                        <tr>وضعیت</tr>
+                        <tr>عملیات</tr>
+                    </th>
+                </thead>
+                <tfoot>
+                    <tr>
+                        <th>عنوان</th>
+                        <th>عکس</th>
+                        <th>وضعیت</th>
+                        <th>عملیات</th>
+                    </tr>
+                </tfoot>
+                </tbody>
+                <tfoot>
+                    <tr>
+                        @if(ViewBag.Company !=null)
+                        {
+                            foreach(var item in ViewBag.Company)
+                            {
+                               <td>@item.Title</td> 
+                               <td>
+                                <img src="/fileupload/@item.image" width="25%">
+                               </td> 
+                                <td>
+                                    @if(item.status == true)
+                                    {
+                                        <p class="alert alert-success">فعال</p>
+                                    }else
+                                    {
+                                        <p class="alert alert-danger">غیرفعال</p>
+                                    }
+                                </td>
+                               <td>
+                                <a class="btn btn-warning" href="/admin/AdminCompany/Gotoupdata/@item.Id">ویرایش</a>
+                                <a class="btn btn-danger" href="/admin/AdminCompany/Gotodelete/@item.Id">حذف کردن </a>
+                                <a class="btn btn-info" href="/admin/AdminCompany/Gotostatus/@item.Id">تغیر وضعیت</a>
+                               </td>
+                            }
+                        }
+                        
+                    </tr>
+                </tfoot>
+                
+            </table>
+        </div>
+    </div>
+</div>
+</div>
+<!-- /.container-fluid
