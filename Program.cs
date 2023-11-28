@@ -21,15 +21,17 @@ if (!app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();
-
 app.UseRouting();
-
 app.UseAuthorization();
+
+
 
 app.MapAreaControllerRoute(
     name: "Area",
     areaName :"Admin",
     pattern: "Admin/{controller=AdminHome}/{action=Index}/{id?}");
+
+
 
 
 app.MapControllerRoute(
